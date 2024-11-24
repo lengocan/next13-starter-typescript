@@ -1,6 +1,13 @@
 // import './globals.css'
+'use client'
 import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '@/components/footer';
+import { Container } from 'react-bootstrap';
+import Header from '@/components/header';
+import Table from '@/components/table';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -16,9 +23,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <header>Header ne</header>
-        {children}
-      <footer>Footer ne</footer>
+      <Container >
+      <Header/>
+        <div className='p-3'>{children}</div>
+        
+        <Footer/>
+       
+        <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+       />
+      </Container>
         </body>
     </html>
   )
